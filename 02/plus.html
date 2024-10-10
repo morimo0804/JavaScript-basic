@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>練習01</title>
+</head>
+
+<body>
+    <p id="result">0</p>
+    <button id="plus">+</button>
+    <button id="minus">-</button>
+
+    <script>
+        const result = document.getElementById('result');
+        const plus = document.getElementById('plus');
+        const minus = document.getElementById('minus');
+        let answer = 0;
+        plus.innerHTML = '+1';
+        minus.innerHTML = '-1';
+
+        plus.addEventListener('click', function () {
+            answer += 1;
+            console.log(answer);
+            result.innerHTML = answer;
+        })
+
+        minus.addEventListener('click', function () {
+            answer -= 1;
+            console.log(answer);
+            result.innerHTML = answer;
+        })
+
+        let val = 1;
+        console.log(`url(${val += 1}.png)`);
+    </script>
+</body>
+
+</html>

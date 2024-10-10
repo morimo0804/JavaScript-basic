@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScriptの基礎</title>
+</head>
+
+<body>
+    <h1 id="heading">練習の見出し</h1>
+    <p id="elem">変化させたい要素</p>
+    <img id="image" src="https://picsum.photos/200/300?image=53">
+
+    <script>
+        const image = document.getElementById('image');
+        let src = image.getAttribute('src');
+        console.log(image);
+        console.log(src);
+
+        const elem = document.getElementById('elem');
+        elem.addEventListener('mouseover', function () {
+            elem.style.color = '#9d9d9d';
+            image.setAttribute('src', 'https://picsum.photos/200/300?image=99');
+        });
+
+        elem.addEventListener('mouseout', function () {
+            elem.style.color = '#000';
+            image.setAttribute('src', src);
+        });
+    </script>
+    <!-- const elem = document.getElementById('elem');
+    console.log(elem);
+
+    elem.addEventListener('mouseover', function () {
+    elem.style.fontSize = '20px';
+    heading.style.fontSize = '80px';
+    heading.style.fontFamily = 'Times New Roman, YuMincho, Hiragino Mincho ProN, Yu Mincho, MS PMincho, serif';
+    });
+
+    elem.addEventListener('mouseout', function () {
+    elem.style.fontSize = 'medium';
+    });
+
+    const heading = document.getElementById('heading');
+    console.log(heading);
+    heading.style.fontSize = '50px';
+    heading.style.textAlign = 'center';
+    heading.style.marginBottom = '80px'; -->
+</body>
+
+</html>
