@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>クリックゲーム2</title>
+</head>
+
+<body>
+    <img id="monster" src="https://trident.takagino.net/doc2024/javascript/assets/03/monster.png" alt="">
+    <p id="count">0回</p>
+    <script>
+        const monster = document.getElementById('monster');
+        const count = document.getElementById('count');
+
+        let tap = 0;
+        count.innerHTML = `${tap}回`;
+        monster.addEventListener('click', function () {
+            if (tap < 30) {
+                count.innerHTML = `${tap += 1}回`;
+            }
+
+            if (tap == 10) {
+                count.innerHTML = `${tap}回達成おめでとう！`;
+            } else if (tap == 20) {
+                count.innerHTML = `${tap}回達成おめでとう！`;
+            } else if (tap == 30) {
+                count.innerHTML = `${tap}回クリア！おめでとう！`;
+            }
+
+            /* 綺麗な書き方(％を使う) */
+            // if (count < clear) {
+            //     count += 1;
+            //     if (count == clear) {
+            //         hp.innerHTML = `${count}回クリア、おめでとう！`;
+            //     } else if (count % 10 == 0) {
+            //         hp.innerHTML = `${count}回達成、おめでとう！`;
+            //     } else {
+            //         hp.innerHTML = `${count}回`;
+            //     }
+            // }
+        });
+    </script>
+
+</body>
+
+</html>
