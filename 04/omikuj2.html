@@ -29,6 +29,7 @@
 
         btn.addEventListener('click', function () {
             const num = Math.floor(Math.random() * 5);
+            result.classList.toggle('active');
 
             switch (num) {
                 case 0:
@@ -56,7 +57,6 @@
                     break;
             }
 
-            result.classList.toggle('active');
         });
     </script>
 </body>
