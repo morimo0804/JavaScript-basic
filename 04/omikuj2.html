@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>条件分岐（switch文）</title>
+    <style>
+        #result {
+            transition: 1s;
+        }
+
+        .active {
+            transform: rotateY(360deg);
+        }
+    </style>
+</head>
+
+<body>
+    <button id="btn">占う</button>
+    <p><img id="result" src="https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/omikuji.png" alt="占う">
+    </p>
+    <p id="message">何か一言が表示されます。</p>
+    <script>
+        const btn = document.getElementById('btn');
+        const result = document.getElementById('result');
+        const message = document.getElementById('message');
+        const count = document.getElementById('count');
+
+        btn.addEventListener('click', function () {
+            const num = Math.floor(Math.random() * 5);
+
+            switch (num) {
+                case 0:
+                    result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/daikichi.png');
+                    message.innerHTML = 'すごいね';
+                    break;
+                case 1:
+                    result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/chuukichi.png');
+                    message.innerHTML = 'いいね';
+                    break;
+                case 2:
+                    result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/syoukichi.png');
+                    message.innerHTML = 'まあまあ';
+                    break;
+                case 3:
+                    result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/kyou.png');
+                    message.innerHTML = 'たいへん';
+                    break;
+                case 4:
+                    result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/daikyou.png');
+                    message.innerHTML = 'やばい';
+                    break;
+                default:
+                    console.log('エラー');
+                    break;
+            }
+
+            result.classList.toggle('active');
+        });
+    </script>
+</body>
+
+</html>
