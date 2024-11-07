@@ -29,45 +29,82 @@
     <p><img id="result" src="https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/omikuji.png" alt="占う">
     </p>
     <p id="message">何か一言が表示されます。</p>
-    <p id="count">大吉の出た回数: 0</p>
+    <p id="daikichi">大吉の出た回数: 0</p>
+    <p id="chuukichi">中吉の出た回数: 0</p>
+    <p id="syoukichi">小吉の出た回数: 0</p>
+    <p id="kyou">凶の出た回数: 0</p>
+    <p id="daikyou">大凶の出た回数: 0</p>
     <button id="btn">占う</button>
     <script>
         const btn = document.getElementById('btn');
         const result = document.getElementById('result');
         const message = document.getElementById('message');
         const count = document.getElementById('count');
-        let number = 0;
+        const daikichi = document.getElementById('daikichi');
+        const chuukichi = document.getElementById('chuukichi');
+        const syoukichi = document.getElementById('syoukichi');
+        const kyou = document.getElementById('kyou');
+        const daikyou = document.getElementById('daikyou');
+        let daikichiCount = 0;
+        let chuukichiCount = 0;
+        let syoukichiCount = 0;
+        let kyouCount = 0;
+        let daikyouCount = 0;
+
+        /*innerHTMLは要素も追加できるので、<ul id='count'></ul>を用意してinnerHTMLで<li></li>を追加するやり方が簡単*/
+
 
         btn.addEventListener('click', function () {
-            const num = Math.floor(Math.random() * 5);
+            const num = Math.floor(Math.random() * 10);
             result.classList.toggle('active');
 
             switch (num) {
                 case 0:
                     result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/daikichi.png');
-                    message.innerHTML = 'すごいね';
-                    number += 1;
-                    if (number % 10 == 0) {
-                        count.innerHTML = `大吉の出た回数: ${number} やったね！！！`;
-                    } else {
-                        count.innerHTML = `大吉の出た回数: ${number}`;
+                    daikichiCount += 1;
+                    daikichi.innerHTML = `大吉の出た回数: ${daikichiCount}`;
+
+                    switch (daikichiCount) {
+                        case 1:
+                            message.innerHTML = `1回目すごいね`;
+                            break;
+                        case 2:
+                            message.innerHTML = `2回目さいこう`;
+                            break;
+                        default:
+                            message.innerHTML = `強運！！`;
+                            break;
                     }
+
                     break;
                 case 1:
+                case 2:
                     result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/chuukichi.png');
                     message.innerHTML = 'いいね';
-                    break;
-                case 2:
-                    result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/syoukichi.png');
-                    message.innerHTML = 'まあまあ';
+                    chuukichiCount += 1;
+                    chuukichi.innerHTML = `中吉の出た回数: ${chuukichiCount}`;
                     break;
                 case 3:
+                case 4:
+                case 5:
+                case 6:
+                    result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/syoukichi.png');
+                    message.innerHTML = 'まあまあ';
+                    syoukichiCount += 1;
+                    syoukichi.innerHTML = `小吉の出た回数: ${syoukichiCount}`;
+                    break;
+                case 7:
+                case 8:
                     result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/kyou.png');
                     message.innerHTML = 'たいへん';
+                    kyouCount += 1;
+                    kyou.innerHTML = `凶の出た回数: ${kyouCount}`;
                     break;
-                case 4:
+                case 9:
                     result.setAttribute('src', 'https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/daikyou.png');
                     message.innerHTML = 'やばい';
+                    daikyouCount += 1;
+                    daikyou.innerHTML = `大凶の出た回数: ${daikyouCount}`;
                     break;
                 default:
                     console.log('エラー');
