@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>配列とランダム</title>
+</head>
+
+<body>
+    <button id="btn">ランダム</button>
+
+    <script>
+        const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#00ffff',];
+        const btn = document.getElementById('btn');
+
+        btn.addEventListener('click', function () {
+            const num = Math.floor(Math.random() * colors.length);
+            document.body.style.backgroundColor = `${colors[num]}`;
+            btn.style.color = `${colors[num]}`;
+        });
+    </script>
+</body>
+
+</html>
