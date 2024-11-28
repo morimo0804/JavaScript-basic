@@ -8,18 +8,41 @@
 </head>
 
 <body>
-    <p id="hoge" class="hoge piyo">a</p>
+    <ul>
+        <li>aaa</li>
+        <li>bbb</li>
+        <li class="obj">ccc</li>
+        <li class="obj">ddd</li>
+    </ul>
+
     <script>
-        const frults = ['apple', 'banana', 'orange'];
-        console.log(frults[3]);
+        // const frults = ['apple', 'banana', 'orange'];
 
-        frults[1] = 'peach';
-        frults[3] = 'egg';
-        console.log(frults.length);
-        console.log(frults[frults.length - 1]);
+        // for (let i = 0; i < frults.length; i++) {
+        //     console.log(`${i}番目の値は、${frults[i]}の値です。`);
+        // }
 
-        const enpty = [];
-        console.log(enpty);
+        // const num = [5, 10, 15, 20, 25, 30];
+        // let sum = 0;
+
+        // for (let i = 0; i < num.length; i++) {
+        //     sum += num[i];
+        // }
+        // console.log(sum);
+
+
+        // let total = 0;
+
+        // for (let i = 1; i < num.length - 1; i++) {
+        //     total += num[i];
+        // }
+        // console.log(total);
+
+        // const list = document.getElementsByTagName('li');
+        // console.log(list.length);
+
+        const elem = document.querySelectorAll('.obj');
+        console.log(elem);
     </script>
 </body>
 
