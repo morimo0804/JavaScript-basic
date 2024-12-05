@@ -22,18 +22,21 @@
     <img id="icon" src="https://www.svgrepo.com/show/489642/pencil.svg" alt="" />
 
     <script>
-        const icon = document.getElementById('icon');
+        const icon = document.querySelector("#icon");
 
-        icon.document.addEventListener("mousemove", function (e) {
+        document.addEventListener("mousemove", function (e) {
             console.log(e.clientX, e.clientY);
+
+            icon.style.top = `${e.clientY}px`;
+            icon.style.left = `${e.clientX}px`;
         });
 
-        icon.document.addEventListener("mousedown", function () {
-            icon.style.transform = 'scale(1.5)';
+        document.addEventListener("mousedown", function () {
+            icon.style.transform = "scale(1.5)";
         });
 
-        icon.document.addEventListener("mouseup", function () {
-
+        document.addEventListener("mouseup", function () {
+            icon.style.transform = "scale(1)";
         });
     </script>
 </body>

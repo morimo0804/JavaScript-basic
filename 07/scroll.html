@@ -21,8 +21,13 @@
             border-radius: 50%;
             background: rgba(0, 0, 0, 0.5);
             color: #fff;
+            /* 要素の真ん中に持ってくるためにfont-sizeとline-heightを1remにしている */
             font-size: 1rem;
             line-height: 1rem;
+            /* テキストが1行ではない時はdisplay:flex;する */
+            /* display: flex;
+            justify-content: center;
+            align-items: center; */
             text-align: center;
             cursor: pointer;
             display: none;
@@ -39,12 +44,14 @@
 
     <script>
         const toTop = document.getElementById('toTop');
+        //300という値もlimitなどの変数にしておくとラク
 
+        //&& かつ、|| または、! 否定
         window.addEventListener("scroll", function () {
             console.log(window.scrollY);
-            if (window.scrollY > 300) {
+            if (window.scrollY > 300 && !toTop.classList.contains('active')) {
                 toTop.classList.add('active');
-            } else if (window.scrollY <= 300) {
+            } else if (window.scrollY <= 300 && toTop.classList.contains('active')) {
                 toTop.classList.remove('active');
             };
         });
