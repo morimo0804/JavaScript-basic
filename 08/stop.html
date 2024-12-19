@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ストップゲーム</title>
+</head>
+
+<body>
+    <div>
+        <button class="start">start</button>
+        <button class="stop">stop</button>
+        <p class="result">0</p>
+        <p class="comment">100を目指そう</p>
+    </div>
+
+    <script>
+        const start = document.querySelector(".start");
+        const stop = document.querySelector(".stop");
+        const result = document.querySelector(".result");
+        const comment = document.querySelector(".comment");
+        let timer;
+        let count = 0;
+
+        const countUp = () => {
+            result.innerHTML = ++count;
+        };
+
+        start.addEventListener('click', () => {
+            count = 0;
+            comment.innerHTML = "";
+            clearInterval(timer);
+            timer = setInterval(countUp, 50);
+        });
+
+        stop.addEventListener('click', () => {
+            console.log('stop');
+            clearInterval(timer);
+            if (98 <= count && count <= 102) {
+                comment.innerHTML = "おしい！";
+            }
+            if (count == 100) {
+                comment.innerHTML = "すごい！";
+            }
+        });
+    </script>
+
+
+</body>
+
+</html>

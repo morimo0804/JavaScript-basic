@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>応用</title>
+</head>
+
+<body>
+    <button class="number">1</button>
+    <button class="number">2</button>
+    <button class="number">3</button>
+    <button class="random">ランダム</button>
+    <p class="result"></p>
+
+    <script>
+        //用意した配列
+        const words = ["1.apple", "2.banana", "3.orange"];
+
+        //結果を表示するp要素を取得
+        const result = document.querySelector(".result");
+
+        //使用する関数式
+        const getWord = (num) => {
+            result.innerHTML = words[num];
+        };
+
+        //初めに表示するランダム
+        let randomText = Math.floor(Math.random() * words.length);
+        getWord(randomText);
+
+        //ランダムボタン押下
+        const randomBtn = document.querySelector('.random');
+        randomBtn.addEventListener('click', () => {
+            let randomText = Math.floor(Math.random() * words.length);
+            getWord(randomText);
+        });
+
+        //ナンバーボタン押下
+        const numberBtn = document.querySelectorAll('.number');
+        console.log(numberBtn);
+
+        for (let i = 0; i < words.length; i++) {
+            numberBtn[i].addEventListener('click', (e) => {
+                console.log(numberBtn[i]);
+                const num = e.target.innerHTML - 1;
+                getWord(num);
+            });
+        }
+    </script>
+</body>
+
+</html>

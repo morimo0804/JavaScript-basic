@@ -8,6 +8,9 @@
 </head>
 
 <body>
+    <h1>見出し</h1>
+    <p>本文</p>
+    <button>ボタン</button>
     <script>
         // function testFunc(val1 = 10, val2 = 20) {
         //     return val1 + val2;
@@ -51,11 +54,72 @@
 
 
         let value = [5, 10, 15, 20, 25];
-        let total = 0;
-        const average = (avgVal) => {
-            return (value[0] + value[1] + value[2] + value[3] + value[4]) / value.length;
+        const average = (val) => {
+            let total = 0;
+            for (let i = 0; i < val.length; i++) {
+                total += val[i];
+            }
+            total /= val.length;
+            return total;
         };
-        console.log(average(avgVal));
+        console.log(average(value));
+
+
+        // const clickEvent = (e) => {
+        //     console.log(e.target);
+        //     e.target.style.color = '#f00';
+        // };
+
+        // window.addEventListener("click", clickEvent);
+
+        const clickEvent = (element) => {
+            console.log(element);
+            element.style.color = '#f00';
+        };
+
+        window.addEventListener("click", (e) => {
+            clickEvent(e.target);
+        });
+
+        //タイマー処理
+        // let count = 0;
+        // let timer;
+        // const countUp = () => {
+        //     console.log(++count);
+
+        //     if (count >= 5) {
+        //         clearInterval(timer);
+        //     }
+        // };
+
+        // timer = setInterval(countUp, 1000);
+
+        //背景変更
+        // const countColor = () => {
+        //     let r = Math.floor(Math.random() * 256);
+        //     let g = Math.floor(Math.random() * 256);
+        //     let b = Math.floor(Math.random() * 256);
+
+        //     document.body.style.backgroundColor = `rgb(${r}, ${g}, ${b})`;
+        // };
+
+        // setInterval(countColor, 1000);
+
+        //setTimeout
+        let count = 0;
+        let timer;
+
+        const countUp = () => {
+            console.log(count++);
+
+            timer = setTimeout(countUp, 1000);
+
+            if (count > 5) {
+                clearTimeout(timer);
+            }
+        };
+
+        countUp();
     </script>
 </body>
 

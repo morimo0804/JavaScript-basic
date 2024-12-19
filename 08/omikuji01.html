@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>おみくじランダム</title>
+</head>
+
+<body>
+    <div>
+        <button class="start">start</button>
+        <button class="stop">stop</button>
+    </div>
+    <img class="pic" src="https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/omikuji.png" alt="">
+
+    <script>
+        const url = "https://trident.takagino.net/doc2024/javascript/assets/04/omikuji/";
+        const files = ["daikichi.png", "chuukichi.png", "syoukichi.png", "kyou.png", "daikyou.png"];
+
+        let timer;
+        const start = document.querySelector(".start");
+        const stop = document.querySelector(".stop");
+        const pic = document.querySelector(".pic");
+
+        const randamPic = () => {
+            let randam = Math.floor(Math.random() * files.length);
+            pic.setAttribute('src', `${url}${files[randam]}`);
+            timer = setTimeout(randamPic, 200);
+        };
+
+        start.addEventListener('click', () => {
+            console.log('start');
+            /* 何度も実行されるのを防ぐ */
+            clearTimeout(timer);
+            timer = setTimeout(randamPic, 200);
+        });
+
+        stop.addEventListener('click', () => {
+            console.log('stop');
+            clearTimeout(timer);
+        });
+
+    </script>
+
+
+</body>
+
+</html>
