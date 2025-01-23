@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>アコーディオンメニュー</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .faq {
+            max-width: 800px;
+            margin: 3em auto;
+        }
+
+        .faq__q {
+            padding: 0.5em 1em;
+            background-color: #39c;
+            cursor: pointer;
+        }
+
+        .faq__a {
+            margin-left: 0;
+            padding: 0 1em;
+        }
+
+        .faq__a {
+            height: 0;
+            margin-left: 0;
+            padding: 0 1em;
+            overflow: hidden;
+        }
+
+        /* 複数クラス */
+        .faq__a.active {
+            height: auto;
+            padding: 0.5em 1em;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, 300px);
+        }
+    </style>
+</head>
+
+<body>
+    <dl class="faq">
+        <div class="faq__item">
+            <dt class="faq__q">2022年11月分の料金はいつ引き落としされますか？</dt>
+            <dd class="faq__a">お客さまの締め日によって異なり、毎月6日、16日、26日の引き落とし日に分かれます。</dd>
+        </div>
+        <div class="faq__item">
+            <dt class="faq__q">前月分の料金が確定するのはいつですか？</dt>
+            <dd class="faq__a">お客さまの締め日から10日後が料金確定日の目安です。</dd>
+        </div>
+        <div class="faq__item">
+            <dt class="faq__q">請求書が届きました。「PayPay」で支払うことはできますか？</dt>
+            <dd class="faq__a">「PayPay」でお支払いできます。</dd>
+        </div>
+    </dl>
+    <button id="btn">生成</button>
+    <script>
+        let active = 0;
+        const q = document.querySelectorAll('.faq__q');
+
+        for (let i = 0; i < q.length; i++) {
+            q[i].addEventListener('click', (e) => {
+                q[active].nextElementSibling.classList.remove('active');
+                active = i;
+                q[active].nextElementSibling.classList.add('active');
+            });
+        }
+
+        const url = [
+            'https://meetsmore.imgix.net/wp/2020/08/c8d0943962aae2cc6d1cf4202f73a5da.jpg?w=930&auto=compress%2Cformat&ixlib=php-1.2.1',
+            'https://s3-ap-northeast-1.amazonaws.com/storage.withnews.jp/2023/01/11/9/ca/9ca585d9-l.jpg',
+            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ1yaAJyGmcic4Oh6mofrD_voZ9BBupQQa_Lg&s',
+            'https://lolipop.jp/school/img/29913059/3-4.jpg',
+            'https://animeanime.jp/imgs/ogp_f/364343.jpg'
+        ];
+        const btn = document.querySelector('#btn');
+        const ul = document.createElement('ul');
+        document.body.append(ul);
+
+        btn.addEventListener('click', () => {
+            const li = document.createElement('li');
+            // li.innerHTML = Math.floor(Math.random() * 100);
+            const img = document.createElement('img');
+            let random = Math.floor(Math.random() * url.length);
+
+            img.setAttribute('src', url[random]);
+            img.setAttribute('width', 300);
+
+            li.append(img);
+            ul.append(li);
+        });
+
+    </script>
+</body>
+
+</html>
